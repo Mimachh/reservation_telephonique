@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary : #F5FF78;
+    --secondary: #000;    
+}
+
+.text-line-through {
+    text-decoration: line-through;
+  }

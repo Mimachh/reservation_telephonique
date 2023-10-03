@@ -1,0 +1,11 @@
+export const STORE_OPENING_AM_HOUR_TIME = 9
+export const STORE_OPENING_AM_MINUTE_TIME = 0
+export const STORE_ClOSING_HOUR_AM_TIME = 12
+export const STORE_ClOSING_MINUTE_AM_TIME = 30
+
+export const STORE_OPENING_PM_HOUR_TIME = 13
+export const STORE_OPENING_PM_MINUTE_TIME = 30
+export const STORE_ClOSING_HOUR_PM_TIME = 17
+export const STORE_ClOSING_MINUTE_PM_TIME = 0
+
+export const INTERVAL = 30
