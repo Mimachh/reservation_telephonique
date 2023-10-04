@@ -5,7 +5,7 @@ RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
 # Install Prisma Client - remove if not using Prisma
-COPY prisma ./prisma
+COPY prisma ./
 
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json ./
@@ -23,7 +23,7 @@ FROM --platform=linux/amd64 node:16-alpine AS builder
 ARG DATABASE_URL
 ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
-RUN npx prisma migrate dev --name init
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
