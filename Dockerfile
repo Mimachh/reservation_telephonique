@@ -24,6 +24,12 @@ ARG DATABASE_URL
 ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
 
+COPY prisma/schema.prisma /app/prisma/schema.prisma
+
+VOLUME ["/app/prisma"]
+
+RUN npx prisma migrate dev --name init
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
@@ -51,11 +57,7 @@ COPY --from=builder /app/next.config.mjs ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 
-COPY prisma/schema.prisma /app/prisma/schema.prisma
 
-VOLUME ["/app/prisma"]
-
-RUN npx prisma migrate dev --name init
 
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
