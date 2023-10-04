@@ -51,6 +51,10 @@ COPY --from=builder /app/next.config.mjs ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 
+COPY prisma/schema.prisma /app/prisma/schema.prisma
+
+VOLUME ["/app/prisma"]
+
 RUN npx prisma migrate dev --name init
 
 
