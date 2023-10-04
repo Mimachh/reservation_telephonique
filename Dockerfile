@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install Prisma Client - remove if not using Prisma
 COPY prisma ./
-
+RUN npx prisma migrate dev --name init
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json ./
 
@@ -53,7 +53,7 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-RUN npx prisma migrate dev --name init
+
 
 USER nextjs
 EXPOSE 3000
