@@ -1,25 +1,19 @@
-import { FC, useState, useEffect } from 'react'
-import { Input, Radio,  Checkbox, Typography, Textarea } from "@material-tailwind/react";
-import { AiOutlineArrowLeft, AiFillPlusCircle } from 'react-icons/ai'
+import { FC } from 'react'
+import { Input, Radio } from "@material-tailwind/react";
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 interface infoPageProps {
   moyenCommunication: string;
   setMoyenCommunication: (value: string) => void;
-  revenir: () => void;
   setNom: (value: string) => void;
   setPrenom: (value: string) => void;
   setMail: (value: string) => void;
   setTelephone: (value: string) => void;
-  setObject: (value: string) => void;
-  saveData: () => void;
-  setAccepteConditions: (value: boolean) => void;
-  accepteConditions: boolean;
 
   nom: string,
   prenom: string,
   mail: string,
   telephone: string,
-  object: string,
   setCurrentPage: (value: number) => void;
   currentPage: number;
 }
@@ -28,28 +22,19 @@ interface infoPageProps {
 
 const index: FC<infoPageProps> = ({
   setMoyenCommunication,
-  revenir,
   setNom,
   setMail,
   setPrenom,
   setTelephone,
-  setObject,
-  saveData,
-  setAccepteConditions,
-  accepteConditions,
-
   nom,
   prenom,
   mail,
   telephone,
-  object,
   moyenCommunication,
   setCurrentPage,
-  currentPage
+  currentPage,
 }) => {
 
-
-console.log("ee",currentPage);
  
     return (
         <div className='px-5 h-full flex flex-col justify-between pt-6'>
@@ -73,6 +58,7 @@ console.log("ee",currentPage);
                   {/* Mail required*/}
                   <div>
                       <Input variant="standard" label="Mail" type='email' crossOrigin="anonymous" required onChange={(e) => setMail(e.target.value)} value={mail} />
+
                   </div>
                   
                   {/* Checkbox téléphone ou google meet */}

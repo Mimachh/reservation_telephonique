@@ -1,4 +1,7 @@
 // dateUtils.ts
+import { parseISO, format } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
+
 
 export const tileDisabled = (date: Date, disabledTimes: Date[]): boolean => {
     return (
@@ -52,8 +55,24 @@ export const getTimes = (
   return times;
 };
 
-export const formatDateToISOString = (dated: any) => {
-  const isoDate = dated.toISOString();
-  const formattedDate = isoDate.replace(/[^\w\s]/gi, '');
-  return formattedDate;       
-};
+export function generateGoogleCalendarLink(date: any, moyenCommunication: string, object: string) {
+
+  const dateDebutInDateTime = date;
+  const dateDebutInDateTimeISO = new Date(dateDebutInDateTime.getTime() - (dateDebutInDateTime.getTimezoneOffset() * 60000)).toISOString().replace(/[^\w\s]/gi, '');
+  const dateFin = new Date(date.getTime() + 45 * 60000)
+  const dateFinInDateTimeISO = new Date(dateFin.getTime() - (dateFin.getTimezoneOffset() * 60000)).toISOString().replace(/[^\w\s]/gi, '');
+  // Remplacez ces informations par les détails de votre événement
+  const eventName = encodeURIComponent("Entretien Karl Muller");
+  const eventLocation = encodeURIComponent(moyenCommunication);
+  const eventDescription = encodeURIComponent(object);
+  const eventStartDate = encodeURIComponent(dateDebutInDateTimeISO);
+  const eventEndDate = encodeURIComponent(dateFinInDateTimeISO);
+
+  // URL de base pour créer un événement Google Calendar
+  const baseUrl = 'https://www.google.com/calendar/render?action=TEMPLATE';
+
+  // Créez l'URL finale avec les paramètres
+  const googleCalendarUrl = `${baseUrl}&text=${eventName}&location=${eventLocation}&details=${eventDescription}&dates=${eventStartDate}/${eventEndDate}`;
+
+  return googleCalendarUrl;
+}

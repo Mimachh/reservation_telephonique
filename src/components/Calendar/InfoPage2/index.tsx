@@ -71,8 +71,6 @@ const index: FC<infoPage2Props> = ({
                           '
                           onClick={()=> {
                             saveData();
-                            // setPage(3)
-                            setCurrentPage(5)
                           }}
                           >Réserver</button>
                     </div>
