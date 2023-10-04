@@ -1,3 +1,4 @@
+"use client"
 import { FC } from 'react'
 import { Input, Radio } from "@material-tailwind/react";
 import { AiOutlineArrowLeft } from 'react-icons/ai'
@@ -51,14 +52,41 @@ const index: FC<infoPageProps> = ({
            ><AiOutlineArrowLeft className='w-4 h-4' /></button>
               <h3 className='text-lg font-bold'>Merci d'indiquer des informations permettant de vous contacter</h3>
                   <div className='grid md:grid-cols-2 grid-cols-1 gap-2'>
-                      <Input variant="standard" label="Nom" crossOrigin="anonymous" required onChange={(e) => setNom(e.target.value)} value={nom}/>
-                      <Input variant="standard" label="Prénom" crossOrigin="anonymous" required onChange={(e) => setPrenom(e.target.value)} value={prenom}/>
+                  <div className="flex items-center border-b border-teal-500 py-2">
+                    <input 
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" 
+                    type="text" 
+                    placeholder="Votre nom*" 
+                    aria-label="Nom" 
+                    onChange={(e) => setNom(e.target.value)} value={nom}
+                    />
+                  </div>
+                  <div className="flex items-center border-b border-teal-500 py-2">
+                    <input 
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" 
+                    type="text" 
+                    placeholder="Votre prénom*" 
+                    aria-label="Prenom" 
+                    onChange={(e) => setPrenom(e.target.value)} value={prenom}
+                    />
+                  </div>
+                      {/* <Input variant="standard" label="Nom" crossOrigin="anonymous" required onChange={(e) => setNom(e.target.value)} value={nom}/> */}
+                      {/* <Input variant="standard" label="Prénom" crossOrigin="anonymous" required onChange={(e) => setPrenom(e.target.value)} value={prenom}/> */}
                   </div>
 
                   {/* Mail required*/}
-                  <div>
+                  {/* <div>
                       <Input variant="standard" label="Mail" type='email' crossOrigin="anonymous" required onChange={(e) => setMail(e.target.value)} value={mail} />
 
+                  </div> */}
+                  <div className="flex items-center border-b border-teal-500 py-2">
+                    <input 
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" 
+                    type="email" 
+                    placeholder="Votre mail*" 
+                    aria-label="Mail" 
+                    onChange={(e) => setMail(e.target.value)} value={mail}
+                    />
                   </div>
                   
                   {/* Checkbox téléphone ou google meet */}
@@ -66,29 +94,61 @@ const index: FC<infoPageProps> = ({
                 
                   <div>
                     <label htmlFor="moyen_communication" className='text-md font-normal'>Par quel moyen souhaitez-vous être contacté?*</label>
-                    <div className="w-full flex justify-start gap-3">
+                    <div className="mt-2 w-full flex justify-around gap-3">
+                      <div className='flex gap-2'>
+                        <label htmlFor="telephone">Téléphone</label>
+                        <input type="radio" 
+                        name="moyen_communication" 
+                        className="radio"
+                        id="telephone"
+                        checked={moyenCommunication === 'telephone'}
+                        onChange={() => setMoyenCommunication('telephone')}
+                        />
+                      </div>
+                      <div className='flex gap-2 items-center'>
+                        <label htmlFor="googleMeet">Google Meet</label>
+                        <input 
+                        type="radio" 
+                        id='googleMeet'
+                        name="moyen_communication" 
+                        className="radio"
+                        checked={moyenCommunication === 'googleMeet'}
+                        onChange={() => setMoyenCommunication('googleMeet')} 
+                        />
+                      </div>
+                    </div>
+                    {/* <div className="w-full flex justify-start gap-3">
                       <Radio
                         name="moyen_communication"
                         label="Téléphone"
                         ripple={true}
                         crossOrigin="anonymous"
-                        checked={moyenCommunication === 'telephone'} // Vérifie si "Téléphone" est sélectionné
-                        onChange={() => setMoyenCommunication('telephone')} // Met à jour l'état lorsque "Téléphone" est sélectionné
+                        checked={moyenCommunication === 'telephone'} 
+                        onChange={() => setMoyenCommunication('telephone')} 
                       />
                       <Radio
                         name="moyen_communication"
                         label="Google Meet"
                         ripple={true}
                         crossOrigin="anonymous"
-                        checked={moyenCommunication === 'googleMeet'} // Vérifie si "Google Meet" est sélectionné
-                        onChange={() => setMoyenCommunication('googleMeet')} // Met à jour l'état lorsque "Google Meet" est sélectionné
+                        checked={moyenCommunication === 'googleMeet'}
+                        onChange={() => setMoyenCommunication('googleMeet')} 
                       />
-                    </div>
+                    </div> */}
 
                     {/* Affiche l'Input si "Téléphone" est sélectionné */}
                     {moyenCommunication === 'telephone' && (
                       <div className='w-1/2'>
-                        <Input variant="standard" label="Téléphone" type='tel' crossOrigin="anonymous"  onChange={(e) => setTelephone(e.target.value)} value={telephone}/>
+                        {/* <Input variant="standard" label="Téléphone" type='tel' crossOrigin="anonymous"  onChange={(e) => setTelephone(e.target.value)} value={telephone}/> */}
+                        <div className="flex items-center border-b border-teal-500 py-2">
+                          <input 
+                          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" 
+                          type="tel" 
+                          placeholder="Votre téléphone" 
+                          aria-label="Téléphone" 
+                          onChange={(e) => setTelephone(e.target.value)} value={telephone}
+                          />
+                        </div>
                       </div>
                     )}
                   </div>      

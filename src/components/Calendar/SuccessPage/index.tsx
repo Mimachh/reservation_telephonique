@@ -1,3 +1,4 @@
+"use client"
 import { FC } from 'react'
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { generateGoogleCalendarLink } from '@/constants/formFunctions';
@@ -26,9 +27,9 @@ const index: FC<successPageProps> = ({
     dateTime
 }) => {
     
-    if(dateTime) {
-        const googleCalendarLink = generateGoogleCalendarLink(dateTime, moyenCommunication, object);
-    }
+    // if(dateTime) {
+    //     const googleCalendarLink = generateGoogleCalendarLink(dateTime, moyenCommunication, object);
+    // }
    
     return (
         <div className='px-5 h-full flex flex-col justify-between pt-6'>

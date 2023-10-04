@@ -58,9 +58,13 @@ export const getTimes = (
 export function generateGoogleCalendarLink(date: any, moyenCommunication: string, object: string) {
 
   const dateDebutInDateTime = date;
-  const dateDebutInDateTimeISO = new Date(dateDebutInDateTime.getTime() - (dateDebutInDateTime.getTimezoneOffset() * 60000)).toISOString().replace(/[^\w\s]/gi, '');
+  // const dateDebutInDateTimeISO = new Date(dateDebutInDateTime.getTime() - (dateDebutInDateTime.getTimezoneOffset() * 60000)).toISOString().replace(/[^\w\s]/gi, '');
+  const dateDebutInDateTimeISO = new Date(dateDebutInDateTime.getTime()).toISOString().replace(/[^\w\s]/gi, '');
+
   const dateFin = new Date(date.getTime() + 45 * 60000)
-  const dateFinInDateTimeISO = new Date(dateFin.getTime() - (dateFin.getTimezoneOffset() * 60000)).toISOString().replace(/[^\w\s]/gi, '');
+  // const dateFinInDateTimeISO = new Date(dateFin.getTime() - (dateFin.getTimezoneOffset() * 60000)).toISOString().replace(/[^\w\s]/gi, '');
+  const dateFinInDateTimeISO = new Date(dateFin.getTime()).toISOString().replace(/[^\w\s]/gi, '');
+
   // Remplacez ces informations par les détails de votre événement
   const eventName = encodeURIComponent("Entretien Karl Muller");
   const eventLocation = encodeURIComponent(moyenCommunication);

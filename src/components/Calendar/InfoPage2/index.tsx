@@ -1,6 +1,7 @@
-import { FC, useState, useEffect } from 'react'
-import { Input, Radio,  Checkbox, Typography, Textarea } from "@material-tailwind/react";
-import { AiOutlineArrowLeft, AiFillPlusCircle } from 'react-icons/ai'
+"use client"
+import { FC } from 'react'
+import { Checkbox, Typography, Textarea } from "@material-tailwind/react";
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 interface infoPage2Props {
     setObject: (value: string) => void;
@@ -41,11 +42,16 @@ const index: FC<infoPage2Props> = ({
                 </button>
 
                 <h3 className='text-lg font-bold'>Merci d'indiquer des informations permettant de vous contacter</h3>
-                <div className="flex w-96 flex-col gap-6">
-                    <Textarea size="md" label="Sujet du rendez-vous"  onChange={(e) => setObject(e.target.value)} value={object}/>
+                <div className="flex w-96 flex-col gap-3">
+                    {/* <Textarea size="md" label="Sujet du rendez-vous"  onChange={(e) => setObject(e.target.value)} value={object}/> */}
+                    <label className='font-medium' htmlFor="object">Sujet de l'entretien</label>
+                    <textarea name="object" id="object"
+                    className='border rounded-md h-36 resize-none'
+                    onChange={(e) => setObject(e.target.value)}
+                    >{object}</textarea>
                 </div>
                         {/* CGU / Politiques */}
-                        <Checkbox
+                        {/* <Checkbox
                           label={
                             <Typography color="blue-gray" className="flex font-medium">
                               J'accepte les 
@@ -62,7 +68,20 @@ const index: FC<infoPage2Props> = ({
                           }
                           crossOrigin="anonymous"
                           onChange={() => setAccepteConditions(!accepteConditions)}
-                        />
+                        /> */}
+                        <div className='space-x-3'>
+                          <input 
+                          type="checkbox" 
+                          className=''
+                          id='terms'
+                          name='terms'
+                          onChange={() => setAccepteConditions(!accepteConditions)}
+                          checked={accepteConditions}
+                          />
+                          <label htmlFor="terms" className='font-tight'>J'accepte les 
+                          <a className="font-medium transition-colors text-blue-300 hover:text-blue-700 underline" 
+                          href="">&nbsp;conditions d'utilisation</a>*.</label>
+                        </div>
 
                 <div className='w-full flex mb-4'>
                           <button className='w-2/3 mx-auto py-3 rounded-xl bg-gradient-to-t 

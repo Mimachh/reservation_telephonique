@@ -1,5 +1,5 @@
 import emailjs from "@emailjs/browser";
-
+import { env } from "@/env.mjs";
 export const sendEmail = (
     nom: string, 
     prenom: string, 
@@ -7,11 +7,11 @@ export const sendEmail = (
     mail: string,    // Correction : Passer le mail en quatrième position
     object: string, 
     moyenCommunication: string,
-    telephone: string
+    telephone: string,
     ) => {
     emailjs.send(
-        String(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID),
-        String(process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID),
+        "service_lv9nhmr",
+        "template_sj1e3oc",
         {
             from_name: [nom, prenom],
             to_name: "Karl",
@@ -19,7 +19,7 @@ export const sendEmail = (
             to_email: "mimach.dev@gmail.com",
             message: [object, String(dateTomail), moyenCommunication, telephone],
         },
-        String(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY),
+        "Xcr7qRSkyJZ0L5BJM"
     ).then((result) => {
         console.log(result.text)
     }, (error) => {

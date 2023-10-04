@@ -1,3 +1,4 @@
+"use client"
 import { FC } from 'react'
 import ReactCalendar from 'react-calendar'
 import { useState, useEffect } from 'react'
@@ -136,7 +137,6 @@ const index: FC<indexProps> = ({}) => {
           });
           setCurrentPage(5);
 
-       
           sendEmail(
             nom,
             prenom,
@@ -144,7 +144,7 @@ const index: FC<indexProps> = ({}) => {
             mail,
             object,
             moyenCommunication,
-            telephone
+            telephone,
           );
           // Réussi
           console.log("La réservation a été ajoutée avec succès");
@@ -153,7 +153,6 @@ const index: FC<indexProps> = ({}) => {
 
         }
       };
-      
 
 
     if(currentPage === 1 ) {
@@ -189,7 +188,7 @@ const index: FC<indexProps> = ({}) => {
         flex flex-col justify-between
         '>
             <div>
-                <h1 className='font-bold text-xl pb-4'>Prise de rendez-vous téléphonique avec X</h1>
+                <h1 className='font-bold text-xl pb-4'>Réserver un entretien téléphonique avec Karl</h1>
                 {currentPage !== 5 ? (
                     <>
                     <p className='flex items-center gap-2'>

@@ -1,3 +1,4 @@
+"use client"
 import { tileDisabled } from '@/constants/formFunctions';
 import { setDate, format } from 'date-fns';
 import React from 'react';
@@ -28,7 +29,7 @@ const DateInfo: React.FC<DateInfoProps> = ({ date, dateTime, times, disabledTime
     return (
         <div className='h-full relative flex flex-col pb-12 pt-6 px-5'>
             <button onClick={() => {
-                resetDate;
+                resetDate();
                 setCurrentPage(1)
             }} 
            className='bg-red-800 text-white inline-block w-max px-4 rounded-sm py-1'
