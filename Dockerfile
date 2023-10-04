@@ -73,3 +73,6 @@ CMD ["node", "server.js"]
 
 # docker build -t reservation_telephonique:v1 --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar --build-arg DATABASE_URL="mysql://root:root@host.docker.internal:3306/reservation_telephonique" .
 # docker run -p 3000:3000 -e DATABASE_URL="mysql://root:root@host.docker.internal:3306/reservation_telephonique" reservation_telephonique:v1
+
+# docker build -t reservation_telephonique:v1 --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar --build-arg 'DATABASE_URL=mysql://reservation:MDP@localhost:3306/reservation_telephonique' .
+# docker run -p 4000:3000 -e 'DATABASE_URL=mysql://root:root@host.docker.internal:3306/reservation_telephonique' reservation_telephonique:v1
