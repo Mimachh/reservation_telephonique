@@ -18,6 +18,7 @@ import { getTimes, tileDisabled } from '@/constants/formFunctions';
 import DateInfo from './Creneaux';
 import { api } from '@/utils/api';
 import { sendEmail } from '@/constants/email';
+import Terms from '../Terms'
 
 
 interface indexProps {}
@@ -77,8 +78,10 @@ const index: FC<indexProps> = ({}) => {
     const [telephone, setTelephone] = useState("");
     const [object, setObject] = useState("");
     const [accepteConditions, setAccepteConditions] = useState(false);
-    
-
+    const [openTerms, setOpenTerms] = useState(false)
+    const handleTermsClose = () => {
+        setOpenTerms(!openTerms);
+    };
     const [currentPage, setCurrentPage] = useState(1);
 
     // const d = [
@@ -181,10 +184,10 @@ const index: FC<indexProps> = ({}) => {
     }  
 
   return (
-    <div className='flex flex-col justify-center items-center h-screen'>
+    <div className='flex flex-col justify-center items-center py-4 min-h-screen md:h-screen'>
       {isClient && (
         <div className='flex flex-col md:flex-row h-fit shadow-sm shadow-gray-200 rounded-2xl bg-white'>
-        <div className='md:h-full bg-gray-300 w-full md:w-[300px] rounded-t-2xl md:rounded-l-2xl md:rounded-r-none p-4
+        <div className='h-fit md:h-full bg-gray-300 w-full md:w-[300px] max-w-[100vw] rounded-t-2xl md:rounded-l-2xl md:rounded-r-none p-4
         flex flex-col justify-between
         '>
             <div>
@@ -243,7 +246,7 @@ const index: FC<indexProps> = ({}) => {
                     </div>
                 ) : null} 
         </div>
-        <div className='h-[500px] max-w-[100%] w-[450px] border rounded-b-2xl md:rounded-r-2xl md:rounded-l-none'>
+        <div className='min-h-[500px] max-w-[100vw] w-[450px] border rounded-b-2xl md:rounded-r-2xl md:rounded-l-none'>
         
             {currentPage === 1 && (
                 <ReactCalendar
@@ -297,6 +300,8 @@ const index: FC<indexProps> = ({}) => {
                 accepteConditions={accepteConditions}
                 setObject={setObject}
                 object={object}
+                openTerms={openTerms}
+                setOpenTerms={handleTermsClose}
                 />
             )}
 
@@ -313,6 +318,7 @@ const index: FC<indexProps> = ({}) => {
                 />
             )}
         </div>
+        <Terms  openTerms={openTerms} setOpenTerms={handleTermsClose}/>
         </div>
       )}
     </div>

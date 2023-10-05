@@ -34,7 +34,7 @@ const DateInfo: React.FC<DateInfoProps> = ({ date, dateTime, times, disabledTime
             }} 
            className='bg-red-800 text-white inline-block w-max px-4 rounded-sm py-1'
            ><AiOutlineArrowLeft className='w-4 h-4' /></button>
-            <div className='flex flex-wrap gap-2 px-12 items-center justify-center pb-36 pt-8'>
+            <div className='flex flex-wrap gap-2 px-0 md:px-12 items-center justify-center pb-36 pt-8'>
                 {times?.map((time: any, i: any) => (
                     <div key={`time-${i}`} className=''>
                         <button 
@@ -50,7 +50,7 @@ const DateInfo: React.FC<DateInfoProps> = ({ date, dateTime, times, disabledTime
                                 disabled:cursor-not-allowed 
                                 inline-block  rounded-md 
                                 font-semibold
-                                bg-indigo-300 text-white px-2 py-3
+                                bg-indigo-300 text-white px-1 md:px-2 py-3
                                 hover:bg-indigo-600 transition-colors duration-200 ease-in w-[90px]'
                         >
                             {format(time, 'kk:mm', { locale: frLocale })}

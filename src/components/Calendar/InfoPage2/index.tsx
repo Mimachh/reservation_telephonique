@@ -2,6 +2,7 @@
 import { FC } from 'react'
 import { Checkbox, Typography, Textarea } from "@material-tailwind/react";
 import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { boolean } from 'zod';
 
 interface infoPage2Props {
     setObject: (value: string) => void;
@@ -11,6 +12,8 @@ interface infoPage2Props {
     object: string,
     setCurrentPage: (value: number) => void;
     currentPage: number;
+    openTerms: boolean;
+    setOpenTerms: (value: boolean) => void;
 }
 
 
@@ -22,7 +25,9 @@ const index: FC<infoPage2Props> = ({
     accepteConditions,
     object,
     setCurrentPage,
-    currentPage
+    currentPage,
+    openTerms,
+    setOpenTerms
 }) => {
 
 
@@ -42,7 +47,7 @@ const index: FC<infoPage2Props> = ({
                 </button>
 
                 <h3 className='text-lg font-bold'>Merci d'indiquer des informations permettant de vous contacter</h3>
-                <div className="flex w-96 flex-col gap-3">
+                <div className="flex w-full md:w-96 flex-col gap-3">
                     {/* <Textarea size="md" label="Sujet du rendez-vous"  onChange={(e) => setObject(e.target.value)} value={object}/> */}
                     <label className='font-medium' htmlFor="object">Sujet de l'entretien</label>
                     <textarea name="object" id="object"
@@ -69,7 +74,7 @@ const index: FC<infoPage2Props> = ({
                           crossOrigin="anonymous"
                           onChange={() => setAccepteConditions(!accepteConditions)}
                         /> */}
-                        <div className='space-x-3'>
+                        <div className='space-x-3 my-2 md:my-0'>
                           <input 
                           type="checkbox" 
                           className=''
@@ -78,9 +83,9 @@ const index: FC<infoPage2Props> = ({
                           onChange={() => setAccepteConditions(!accepteConditions)}
                           checked={accepteConditions}
                           />
-                          <label htmlFor="terms" className='font-tight'>J'accepte les 
-                          <a className="font-medium transition-colors text-blue-300 hover:text-blue-700 underline" 
-                          href="">&nbsp;conditions d'utilisation</a>*.</label>
+                          <label htmlFor="terms" className='text-sm md:text-medium font-tight'>J'accepte les 
+                          <button onClick={() => setOpenTerms(true) } className="text-sm md:text-medium transition-colors text-blue-300 hover:text-blue-700 underline" 
+                          >&nbsp;conditions d'utilisation</button>*.</label>
                         </div>
 
                 <div className='w-full flex mb-4'>

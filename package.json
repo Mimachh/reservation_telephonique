@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
     "@material-tailwind/react": "^2.1.2",
     "@prisma/client": "^5.1.1",
     "@t3-oss/env-nextjs": "^0.6.0",

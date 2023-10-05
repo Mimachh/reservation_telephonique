@@ -1,6 +1,6 @@
 .react-calendar {
     width: 450px;
-    max-width: 100%;
+    max-width: 100vw;
     background: white;
     /* border: 1px solid rgb(209 213 219); */
     line-height: 1.125em;
@@ -27,7 +27,7 @@
   }
   
   /* Custom Navigation Styles */
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 300px) {
     .react-calendar__navigation__prev2-button,
     .react-calendar__navigation__prev-button {
       display: none;
